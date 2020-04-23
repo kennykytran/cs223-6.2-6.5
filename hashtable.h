@@ -57,15 +57,17 @@ struct nlist* undef(char *name){
 
   found = lookup(name);
 
-  if (found == NULL) return NULL;
-  
+  if (found == NULL)
+    return NULL;
   else{
-      if(found->next != NULL){ found->next = found->next->next;}
+      if(found->next != NULL){
+        found->next = found->next->next;
+      }
       else{
         hashtab[hash(name)] = NULL;
-        free((void*) found);}
+        free((void*) found);
+      }
   }
-
   return found;
 }
 
@@ -79,21 +81,28 @@ void undef_test(void) {
 
     int i;
 
-    for (i=0; i < 4; i++) { printf("%s->%s\n", table[i]->name, table[i]->defn);}
+    for (i=0; i < 4; i++) {
+        printf("%s->%s\n", table[i]->name, table[i]->defn);
+    }
 
     undef("key");
     undef("key3");
+
     struct nlist *result;
 
     char *keys[4] = {
             "key",
             "key1",
             "key2",
-            "key3"};
+            "key3"
+    };
 
     for (i = 0; i < 4; i++) {
-        if ((result = lookup(keys[i])) == NULL) { printf("key not found\n");} 
-	   else { printf("%s->%s\n", result->name, result->defn);}
+        if ((result = lookup(keys[i])) == NULL) {
+            printf("key not found\n");
+        } else {
+            printf("%s->%s\n", result->name, result->defn);
+        }
     }
 
 }
