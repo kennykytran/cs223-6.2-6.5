@@ -17,7 +17,6 @@ int main(int argc, const char* argv[]) {
   //6.4 uncompleted
 
   //6.5
-  
   printf("\n\nUNDEF TEST =================================================\n\n");
   undef_test();
   printf("\nFINISHED UNDEF TEST ========================================\n");
